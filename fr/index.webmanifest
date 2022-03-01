@@ -2,7 +2,7 @@
   "name": "𝐀𝐩𝐨𝐥𝐥𝐨𝐗 | 量化交易",
   "short_name": "𝐀𝐩𝐨𝐥𝐥𝐨𝐗 | 量化交易",
   "lang": "fr-FR",
-  "theme_color": "#655e7a",
+  "theme_color": "#393f5c",
   "background_color": "#fff",
 
   
@@ -17,32 +17,32 @@
   
   "icons": [
     {
-      "src": "/images/favicon_hu7aa7d58ba2f81102a2d43d01e57465fd_1378_48x48_resize_box_2.png",
+      "src": "/images/favicon_hu33b318409cbcdefe2c3cb1e12c192d55_37397_48x48_resize_box_2.png",
       "sizes": "48x48",
       "type": "image/png"
     },
     {
-      "src": "/images/favicon_hu7aa7d58ba2f81102a2d43d01e57465fd_1378_72x72_resize_box_2.png",
+      "src": "/images/favicon_hu33b318409cbcdefe2c3cb1e12c192d55_37397_72x72_resize_box_2.png",
       "sizes": "72x72",
       "type": "image/png"
     },
     {
-      "src": "/images/favicon_hu7aa7d58ba2f81102a2d43d01e57465fd_1378_96x96_resize_box_2.png",
+      "src": "/images/favicon_hu33b318409cbcdefe2c3cb1e12c192d55_37397_96x96_resize_box_2.png",
       "sizes": "96x96",
       "type": "image/png"
     },
     {
-      "src": "/images/favicon_hu7aa7d58ba2f81102a2d43d01e57465fd_1378_144x144_resize_box_2.png",
+      "src": "/images/favicon_hu33b318409cbcdefe2c3cb1e12c192d55_37397_144x144_resize_box_2.png",
       "sizes": "144x144",
       "type": "image/png"
     },
     {
-      "src": "/images/favicon_hu7aa7d58ba2f81102a2d43d01e57465fd_1378_192x192_resize_box_2.png",
+      "src": "/images/favicon_hu33b318409cbcdefe2c3cb1e12c192d55_37397_192x192_resize_box_2.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/images/favicon_hu7aa7d58ba2f81102a2d43d01e57465fd_1378_512x512_resize_box_2.png",
+      "src": "/images/favicon_hu33b318409cbcdefe2c3cb1e12c192d55_37397_512x512_resize_box_2.png",
       "sizes": "512x512",
       "type": "image/png"
     }
