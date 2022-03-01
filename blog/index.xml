@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>專業培訓課程 on 𝐀𝐩𝐨𝐥𝐥𝐨𝐗 | 量化交易</title>
+    <link>https://apollox-company.github.io/blog/</link>
+    <description>Recent content in 專業培訓課程 on 𝐀𝐩𝐨𝐥𝐥𝐨𝐗 | 量化交易</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Sat, 01 Jan 2022 11:07:10 +0600</lastBuildDate><atom:link href="https://apollox-company.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何打造個人網站</title>
+      <link>https://apollox-company.github.io/blog/website/</link>
+      <pubDate>Sat, 01 Jan 2022 11:07:10 +0600</pubDate>
+      
+      <guid>https://apollox-company.github.io/blog/website/</guid>
+      <description>前言  無論你是想累積個人作品，或是公司企業想塑造專業形象以增加曝光率，架設屬於自己風格的網站絕對會是一個好選擇。 但架設網站通常費時又費力，而網路上常推薦的架站技術如:Wix、Wordpress、Blogger似乎又太過繁雜，而且無法打造個人的專屬風格。
+所幸，Hahow竟然有開一堂號稱30分鐘完成網站架設，到底有沒有那麼神奇呢?就讓我們做一次看看吧!
+ 目錄  選擇網頁模板 本地端運行 客制化網站 線上部署 Google功能</description>
+    </item>
+    
+    <item>
+      <title>Pretty-print dates</title>
+      <link>https://apollox-company.github.io/blog/date-i18n/</link>
+      <pubDate>Thu, 01 Apr 2021 00:00:00 +0100</pubDate>
+      
+      <guid>https://apollox-company.github.io/blog/date-i18n/</guid>
+      <description>To write out an ISO 8601 timestamp in the current language, you can use the date_l10n shortcode:</description>
+    </item>
+    
+    <item>
+      <title>How To Wear Bright Shoes</title>
+      <link>https://apollox-company.github.io/blog/blog-post-2/</link>
+      <pubDate>Mon, 24 Sep 2018 11:07:10 +0600</pubDate>
+      
+      <guid>https://apollox-company.github.io/blog/blog-post-2/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit vitae placeat ad architecto nostrum asperiores vel aperiam, veniam eum nulla.</description>
+    </item>
+    
+    <item>
+      <title>How To Wear Bright Shoes</title>
+      <link>https://apollox-company.github.io/blog/blog-post-3/</link>
+      <pubDate>Mon, 24 Sep 2018 11:07:10 +0600</pubDate>
+      
+      <guid>https://apollox-company.github.io/blog/blog-post-3/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit vitae placeat ad architecto nostrum asperiores vel aperiam, veniam eum nulla.</description>
+    </item>
+    
+    <item>
+      <title>How To Wear Bright Shoes</title>
+      <link>https://apollox-company.github.io/blog/blog-post-4/</link>
+      <pubDate>Mon, 24 Sep 2018 11:07:10 +0600</pubDate>
+      
+      <guid>https://apollox-company.github.io/blog/blog-post-4/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit vitae placeat ad architecto nostrum asperiores vel aperiam, veniam eum nulla.</description>
+    </item>
+    
+    <item>
+      <title>How To Wear Bright Shoes</title>
+      <link>https://apollox-company.github.io/blog/blog-post-5/</link>
+      <pubDate>Mon, 24 Sep 2018 11:07:10 +0600</pubDate>
+      
+      <guid>https://apollox-company.github.io/blog/blog-post-5/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit vitae placeat ad architecto nostrum asperiores vel aperiam, veniam eum nulla.</description>
+    </item>
+    
+    <item>
+      <title>How To Wear Bright Shoes</title>
+      <link>https://apollox-company.github.io/blog/blog-post-6/</link>
+      <pubDate>Mon, 24 Sep 2018 11:07:10 +0600</pubDate>
+      
+      <guid>https://apollox-company.github.io/blog/blog-post-6/</guid>
+      <description>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit vitae placeat ad architecto nostrum asperiores vel aperiam, veniam eum nulla.</description>
+    </item>
+    
+  </channel>
+</rss>
