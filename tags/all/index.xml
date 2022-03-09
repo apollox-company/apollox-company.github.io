@@ -6,7 +6,17 @@
     <description>Recent content in All on 𝐀𝐩𝐨𝐥𝐥𝐨𝐗 | 量化交易</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Sun, 02 Jan 2022 11:07:10 +0600</lastBuildDate><atom:link href="https://apollox-company.github.io/tags/all/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 03 Jan 2022 11:07:10 +0600</lastBuildDate><atom:link href="https://apollox-company.github.io/tags/all/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python快速入門</title>
+      <link>https://apollox-company.github.io/blog/basis/</link>
+      <pubDate>Mon, 03 Jan 2022 11:07:10 +0600</pubDate>
+      
+      <guid>https://apollox-company.github.io/blog/basis/</guid>
+      <description>前言  從2015年以來Python在全球的討論度急速上升，就連我也是在2019年才開始接觸Python。 老實說Python就其他程式語言相比的確好學很多，在數據分析及機器學習的部分更是屌打其他語言。 所以大家不用擔心沒程式背景，網路上也有非常多的documents可以參考，開發效率更是高得嚇人，你敢相信短短三行程式碼就可以做量化分析嗎?
+ 目錄  認識程式語言 Python基礎語法 pandas應用</description>
+    </item>
+    
     <item>
       <title>建置Python開發環境</title>
       <link>https://apollox-company.github.io/blog/environment/</link>
