@@ -6,7 +6,17 @@
     <description>Recent content in 專業培訓課程 on 𝐀𝐩𝐨𝐥𝐥𝐨𝐗 | 量化交易</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Sat, 01 Jan 2022 11:07:10 +0600</lastBuildDate><atom:link href="https://apollox-company.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 02 Jan 2022 11:07:10 +0600</lastBuildDate><atom:link href="https://apollox-company.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>建置Python開發環境</title>
+      <link>https://apollox-company.github.io/blog/environment/</link>
+      <pubDate>Sun, 02 Jan 2022 11:07:10 +0600</pubDate>
+      
+      <guid>https://apollox-company.github.io/blog/environment/</guid>
+      <description>前言  在開發程式時工程師都會選擇適合的IDE，常見的有VScode、Spyder、Pycharm、Jupyter Notebook，甚至是最近流行的雲端編輯器colab。 而我個人最愛使用的是Jupyter Lab，主要的優勢在於只要shift+enter即可輸出程式結果，這就是為什麼它能成為量化交易的入門程式編輯器了!
+ 目錄  安裝Anaconda 創造專屬開發環境 安裝量化套件 解決中文字體功能</description>
+    </item>
+    
     <item>
       <title>如何打造個人網站</title>
       <link>https://apollox-company.github.io/blog/website/</link>

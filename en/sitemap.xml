@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://apollox-company.github.io/</loc>
-    <lastmod>2022-01-01T11:07:10+06:00</lastmod>
+    <lastmod>2022-01-02T11:07:10+06:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -26,13 +26,13 @@
                 />
   </url><url>
     <loc>https://apollox-company.github.io/tags/all/</loc>
-    <lastmod>2022-01-01T11:07:10+06:00</lastmod>
+    <lastmod>2022-01-02T11:07:10+06:00</lastmod>
   </url><url>
     <loc>https://apollox-company.github.io/categories/all/</loc>
-    <lastmod>2022-01-01T11:07:10+06:00</lastmod>
+    <lastmod>2022-01-02T11:07:10+06:00</lastmod>
   </url><url>
     <loc>https://apollox-company.github.io/categories/</loc>
-    <lastmod>2022-01-01T11:07:10+06:00</lastmod>
+    <lastmod>2022-01-02T11:07:10+06:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -54,14 +54,17 @@
                 href="https://apollox-company.github.io/categories/"
                 />
   </url><url>
-    <loc>https://apollox-company.github.io/tags/google/</loc>
-    <lastmod>2022-01-01T11:07:10+06:00</lastmod>
+    <loc>https://apollox-company.github.io/tags/environment/</loc>
+    <lastmod>2022-01-02T11:07:10+06:00</lastmod>
   </url><url>
-    <loc>https://apollox-company.github.io/tags/hugo/</loc>
-    <lastmod>2022-01-01T11:07:10+06:00</lastmod>
+    <loc>https://apollox-company.github.io/tags/python/</loc>
+    <lastmod>2022-01-02T11:07:10+06:00</lastmod>
+  </url><url>
+    <loc>https://apollox-company.github.io/categories/python/</loc>
+    <lastmod>2022-01-02T11:07:10+06:00</lastmod>
   </url><url>
     <loc>https://apollox-company.github.io/tags/</loc>
-    <lastmod>2022-01-01T11:07:10+06:00</lastmod>
+    <lastmod>2022-01-02T11:07:10+06:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -83,13 +86,22 @@
                 href="https://apollox-company.github.io/tags/"
                 />
   </url><url>
+    <loc>https://apollox-company.github.io/blog/</loc>
+    <lastmod>2022-01-02T11:07:10+06:00</lastmod>
+  </url><url>
+    <loc>https://apollox-company.github.io/blog/environment/</loc>
+    <lastmod>2022-01-02T11:07:10+06:00</lastmod>
+  </url><url>
+    <loc>https://apollox-company.github.io/tags/google/</loc>
+    <lastmod>2022-01-01T11:07:10+06:00</lastmod>
+  </url><url>
+    <loc>https://apollox-company.github.io/tags/hugo/</loc>
+    <lastmod>2022-01-01T11:07:10+06:00</lastmod>
+  </url><url>
     <loc>https://apollox-company.github.io/categories/website/</loc>
     <lastmod>2022-01-01T11:07:10+06:00</lastmod>
   </url><url>
     <loc>https://apollox-company.github.io/blog/website/</loc>
-    <lastmod>2022-01-01T11:07:10+06:00</lastmod>
-  </url><url>
-    <loc>https://apollox-company.github.io/blog/</loc>
     <lastmod>2022-01-01T11:07:10+06:00</lastmod>
   </url><url>
     <loc>https://apollox-company.github.io/message_sent/</loc>
