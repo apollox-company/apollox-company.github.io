@@ -411,13 +411,13 @@ pip list
 # 匯出文字檔
 pip freeze &gt; requirements.txt
 </code></pre><blockquote>
-<p>修改<code>requirements.txt</code> (若安裝過程錯誤，另行單獨安裝單一套件即可)</p>
+<p>修改<code>requirements.txt</code> (若安裝過程錯誤，另行單獨安裝單一套件即可) <br> 輸入<code>pip install -r requirements.txt</code></p>
 </blockquote>
 <pre><code>requests==2.27.1
 beautifulsoup4==4.10.0
 selenium==4.1.0
 tqdm==4.31.1
-ipywidgets==7.4.2
+ipywidgets==7.7.0
 seaborn==0.11.2
 plotly==5.5.0
 pyecharts==1.7.1
@@ -469,6 +469,18 @@ plt.rcParams[<span style="color:#d20;background-color:#fff0f0">&#39;font.sans-se
     <h4 class="widget-title">Latest Posts</h4>
     
     <div class="media">
+      <a class="pull-left" href="/blog/crawler/">
+        
+        <img class="media-object" src="/images/blog/crawler.png" alt="Python網頁爬蟲實戰">
+        
+      </a>
+      <div class="media-body">
+        <h4 class="media-heading"><a href="/blog/crawler/">Python網頁爬蟲實戰</a></h4>
+        <p>前言  這個章節來到Python的最強功能&ndash;網頁爬蟲，這也是數據分析最重要的前菜，大家想 …</p>
+      </div>
+    </div>
+    
+    <div class="media">
       <a class="pull-left" href="/blog/basis/">
         
         <img class="media-object" src="/images/blog/basis.png" alt="Python快速入門">
@@ -517,6 +529,7 @@ plt.rcParams[<span style="color:#d20;background-color:#fff0f0">&#39;font.sans-se
   <h4 class="widget-title">Tags</h4>
   <ul class="widget-tag-list">
     <li><a href="/tags/all/">All</a></li>
+    <li><a href="/tags/crawler/">crawler</a></li>
     <li><a href="/tags/environment/">environment</a></li>
     <li><a href="/tags/google/">Google</a></li>
     <li><a href="/tags/hugo/">Hugo</a></li>

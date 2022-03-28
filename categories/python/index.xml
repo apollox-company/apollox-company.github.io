@@ -6,7 +6,18 @@
     <description>Recent content in Python on 𝐀𝐩𝐨𝐥𝐥𝐨𝐗 | 量化交易</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 03 Jan 2022 11:07:10 +0600</lastBuildDate><atom:link href="https://apollox-company.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 04 Jan 2022 11:07:10 +0600</lastBuildDate><atom:link href="https://apollox-company.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python網頁爬蟲實戰</title>
+      <link>https://apollox-company.github.io/blog/crawler/</link>
+      <pubDate>Tue, 04 Jan 2022 11:07:10 +0600</pubDate>
+      
+      <guid>https://apollox-company.github.io/blog/crawler/</guid>
+      <description>前言  這個章節來到Python的最強功能&amp;ndash;網頁爬蟲，這也是數據分析最重要的前菜，大家想想看，要進行數據分析前最重要的是什麼?
+當然就是要有數據，而數據的來源通常就是網路上公開的資料，但有些網站沒有提供下載的按鍵，這時候就要解析網頁結構去爬取我們想要的數據，最後將爬蟲寫成每日自動爬取，如此一來就可以進行數據分析的部分囉~
+ 目錄  爬蟲技巧SOP 證交所爬蟲 公開資訊觀測站爬蟲 期交所爬蟲 蝦皮爬蟲 鉅亨網爬蟲 CMoney爬蟲</description>
+    </item>
+    
     <item>
       <title>Python快速入門</title>
       <link>https://apollox-company.github.io/blog/basis/</link>

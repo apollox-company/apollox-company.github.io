@@ -5,11 +5,11 @@
 
 <head>
 	<meta charset="utf-8">
-<title>pandas</title>
+<title>Python網頁爬蟲實戰</title>
 
 
 
-<base href="https://apollox-company.github.io/tags/pandas/">
+<base href="https://apollox-company.github.io/blog/crawler/">
 
 
 
@@ -17,7 +17,7 @@
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-<meta name="description" content="This is meta description">
+<meta name="description" content="認識網頁型態 &amp; 爬蟲技巧大公開">
 
 <meta name="author" content="Themefisher">
 <meta name="generator" content="Hugo 0.83.1" />
@@ -56,32 +56,18 @@
 
 
 
-<meta property="og:image" content="https://apollox-company.github.io/images/logo.png" />
-
-
-
-
-<meta name="twitter:image" content="https://apollox-company.github.io/images/logo.png" />
-<meta name="twitter:card"
-  content="summary_large_image">
-
-<meta property="og:image:width" content="1317">
-<meta property="og:image:height" content="380">
-
-
-<meta property="og:image:type"
-  content="image/png">
-
-<meta name="twitter:title" content="pandas" />
+<meta name="twitter:title" content="Python網頁爬蟲實戰" />
 <meta name="twitter:description"
-  content="This is meta description" />
+  content="認識網頁型態 &amp; 爬蟲技巧大公開" />
 
 
 
-<meta property="og:title" content="pandas" />
-<meta property="og:description" content="This is meta description" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://apollox-company.github.io/tags/pandas/" />
+<meta property="og:title" content="Python網頁爬蟲實戰" />
+<meta property="og:description" content="認識網頁型態 &amp; 爬蟲技巧大公開" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://apollox-company.github.io/blog/crawler/" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2022-01-04T11:07:10&#43;06:00" />
+<meta property="article:modified_time" content="2022-01-04T11:07:10&#43;06:00" />
 
 
 
@@ -348,13 +334,13 @@ if (!doNotTrack) {
 	<main>
 		
 
-<section class="page-title bg-2" style="background-image: url('/');">
+<section class="page-title bg-2" style="background-image: url('/images/feature-bg.jpg');">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="block">
-          <h1>pandas</h1>
-          <p></p>
+          <h1>Python網頁爬蟲實戰</h1>
+          <p>認識網頁型態 &amp; 爬蟲技巧大公開</p>
         </div>
       </div>
     </div>
@@ -365,38 +351,47 @@ if (!doNotTrack) {
 
 
 
-<div class="page-wrapper">
+<section class="page-wrapper">
   <div class="container">
     <div class="row">
       <div class="col-md-8">
-        <div class="post">
-          <div class="post-media post-thumb">
-            <a href="/blog/basis/">
-              <img src="/images/blog/basis.png" alt="Python快速入門">
-            </a>
-          </div>
-          <h3 class="post-title"><a href="/blog/basis/">Python快速入門</a></h3>
+        <div class="post post-single">
+          <h2 class="post-title">Python網頁爬蟲實戰</h2>
           <div class="post-meta">
             <ul>
-              <li><i class="fas fa-calendar-week"></i> :date_long</li>
-              <li><i class="fas fa-user"></i>
+              <li><i class="ion-calendar"></i> :date_long</li>
+              <li><i class="ion-android-people"></i>
                 Posted by
                 <a class="text-primary" href="/author/oscar">Oscar</a>
               </li>
-              <li><i class="fas fa-tags"></i>
-                <a href="/tags/python">Python</a>, <a href="/tags/pandas">pandas</a>, <a href="/tags/all">All</a>
+              <li><i class="ion-pricetags"></i>
+                <a href="/tags/python">Python</a>, <a href="/tags/crawler">crawler</a>, <a href="/tags/all">All</a>
               </li>
             </ul>
           </div>
-          <div class="post-content">
-            <p>前言  從2015年以來Python在全球的討論度急速上升，就連我也是在2019年才開始接觸Python。 老實說Python就其他程式語言相比的確好學很多，在數據分析及機器學習的部分更是屌打其他語言。 所以大家不用擔心沒程式背景，網路上也有非常多的documents可以參考，開發效率更是高得嚇人，你敢相信短短三行程式碼就可以做量化分析嗎?
- 目錄  認識程式語言 Python基礎語法 pandas應用</p>
-            <a href="/blog/basis/" class="btn btn-main">Continue reading</a>
+          <div class="post-thumb">
+            <img class="img-responsive" src="/images/blog/crawler.png" alt="Python網頁爬蟲實戰">
           </div>
+          <div class="post-content post-excerpt">
+            <h2 id="前言"><strong>前言</strong></h2>
+<blockquote>
+<p>這個章節來到Python的最強功能&ndash;<code>網頁爬蟲</code>，這也是數據分析最重要的前菜，大家想想看，要進行數據分析前最重要的是什麼?<br> <br>當然就是要有數據，而數據的來源通常就是網路上公開的資料，但有些網站沒有提供下載的按鍵，這時候就要解析網頁結構去爬取我們想要的數據，最後將爬蟲寫成每日自動爬取，如此一來就可以進行數據分析的部分囉~</p>
+</blockquote>
+<h2 id="目錄"><strong>目錄</strong></h2>
+<blockquote>
+<p><code>爬蟲技巧SOP</code> <br> <code>證交所爬蟲</code> <br> <code>公開資訊觀測站爬蟲</code> <br> <code>期交所爬蟲</code> <br> <code>蝦皮爬蟲</code> <br> <code>鉅亨網爬蟲</code> <br> <code>CMoney爬蟲</code></p>
+</blockquote>
+<h2 id="爬蟲技巧sop"><strong>爬蟲技巧SOP</strong></h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">                          <span style="color:#b06;font-weight:bold">-----</span> <span style="color:#b06;font-weight:bold">pd</span>.<span style="color:#b06;font-weight:bold">read</span>   <span style="color:#a61717;background-color:#e3d2d2">#</span> <span style="color:#b06;font-weight:bold">表格</span>
+          <span style="color:#b06;font-weight:bold">----</span> <span style="color:#b06;font-weight:bold">requests</span> <span style="color:#b06;font-weight:bold">--</span>|<span style="color:#b06;font-weight:bold">----</span> <span style="color:#b06;font-weight:bold">res</span>.<span style="color:#b06;font-weight:bold">json</span>  <span style="color:#a61717;background-color:#e3d2d2">#</span> <span style="color:#b06;font-weight:bold">文字</span>
+         |                <span style="color:#b06;font-weight:bold">-----</span> <span style="color:#b06;font-weight:bold">bs4</span>       <span style="color:#a61717;background-color:#e3d2d2">#</span> <span style="color:#b06;font-weight:bold">文字</span>
+<span style="color:#b06;font-weight:bold">crawler</span> <span style="color:#b06;font-weight:bold">--</span>
+         |
+          <span style="color:#b06;font-weight:bold">----</span> <span style="color:#b06;font-weight:bold">selenuim</span>    <span style="color:#a61717;background-color:#e3d2d2">#</span> <span style="color:#b06;font-weight:bold">模擬瀏覽器</span>
+</code></pre></div>
+          </div>
+          
         </div>
-
-        
-        
       </div>
       <div class="col-md-4">
         <aside class="sidebar"><div class="widget widget-latest-post">
@@ -467,7 +462,7 @@ if (!doNotTrack) {
     <li><a href="/tags/environment/">environment</a></li>
     <li><a href="/tags/google/">Google</a></li>
     <li><a href="/tags/hugo/">Hugo</a></li>
-    <li><a href="/tags/pandas/" class="current">pandas</a></li>
+    <li><a href="/tags/pandas/">pandas</a></li>
     <li><a href="/tags/python/">Python</a></li>
   </ul>
 </div>
@@ -476,7 +471,7 @@ if (!doNotTrack) {
       </div>
     </div>
   </div>
-</div>
+</section>
 
 
 
