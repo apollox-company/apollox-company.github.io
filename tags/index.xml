@@ -6,13 +6,58 @@
     <description>Recent content in Tags on 𝐀𝐩𝐨𝐥𝐥𝐨𝐗 | 量化交易</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 05 Jan 2022 11:07:10 +0600</lastBuildDate><atom:link href="https://apollox-company.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 06 Jan 2022 11:07:10 +0600</lastBuildDate><atom:link href="https://apollox-company.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>All</title>
       <link>https://apollox-company.github.io/tags/all/</link>
-      <pubDate>Wed, 05 Jan 2022 11:07:10 +0600</pubDate>
+      <pubDate>Thu, 06 Jan 2022 11:07:10 +0600</pubDate>
       
       <guid>https://apollox-company.github.io/tags/all/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>matplotlib</title>
+      <link>https://apollox-company.github.io/tags/matplotlib/</link>
+      <pubDate>Thu, 06 Jan 2022 11:07:10 +0600</pubDate>
+      
+      <guid>https://apollox-company.github.io/tags/matplotlib/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>plotly</title>
+      <link>https://apollox-company.github.io/tags/plotly/</link>
+      <pubDate>Thu, 06 Jan 2022 11:07:10 +0600</pubDate>
+      
+      <guid>https://apollox-company.github.io/tags/plotly/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pyecharts</title>
+      <link>https://apollox-company.github.io/tags/pyecharts/</link>
+      <pubDate>Thu, 06 Jan 2022 11:07:10 +0600</pubDate>
+      
+      <guid>https://apollox-company.github.io/tags/pyecharts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://apollox-company.github.io/tags/python/</link>
+      <pubDate>Thu, 06 Jan 2022 11:07:10 +0600</pubDate>
+      
+      <guid>https://apollox-company.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>seaborn</title>
+      <link>https://apollox-company.github.io/tags/seaborn/</link>
+      <pubDate>Thu, 06 Jan 2022 11:07:10 +0600</pubDate>
+      
+      <guid>https://apollox-company.github.io/tags/seaborn/</guid>
       <description></description>
     </item>
     
@@ -40,15 +85,6 @@
       <pubDate>Wed, 05 Jan 2022 11:07:10 +0600</pubDate>
       
       <guid>https://apollox-company.github.io/tags/mutlithreading/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Python</title>
-      <link>https://apollox-company.github.io/tags/python/</link>
-      <pubDate>Wed, 05 Jan 2022 11:07:10 +0600</pubDate>
-      
-      <guid>https://apollox-company.github.io/tags/python/</guid>
       <description></description>
     </item>
     
