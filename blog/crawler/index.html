@@ -379,7 +379,7 @@ if (!doNotTrack) {
 </blockquote>
 <h2 id="目錄"><strong>目錄</strong></h2>
 <blockquote>
-<p><code>爬蟲技巧SOP</code> <br> <code>證交所爬蟲</code> <br> <code>公開資訊觀測站爬蟲</code> <br> <code>期交所爬蟲</code> <br> <code>蝦皮爬蟲</code> <br> <code>鉅亨網爬蟲</code> <br> <code>CMoney爬蟲</code></p>
+<p><code>爬蟲技巧SOP</code> <br> <code>證交所爬蟲</code> <br> <code>公開資訊觀測站爬蟲</code> <br> <code>鉅亨網爬蟲</code> <br> <code>tradingview爬蟲</code>   <br> <code>CMoney爬蟲</code> <br> <code>即時報價爬蟲</code></p>
 </blockquote>
 <h2 id="爬蟲技巧sop"><strong>爬蟲技巧SOP</strong></h2>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">                          <span style="color:#b06;font-weight:bold">-----</span> <span style="color:#b06;font-weight:bold">pd</span>.<span style="color:#b06;font-weight:bold">read</span>   <span style="color:#a61717;background-color:#e3d2d2">#</span> <span style="color:#b06;font-weight:bold">表格</span>
@@ -388,10 +388,218 @@ if (!doNotTrack) {
 <span style="color:#b06;font-weight:bold">crawler</span> <span style="color:#b06;font-weight:bold">--</span>
          |
           <span style="color:#b06;font-weight:bold">----</span> <span style="color:#b06;font-weight:bold">selenuim</span>    <span style="color:#a61717;background-color:#e3d2d2">#</span> <span style="color:#b06;font-weight:bold">模擬瀏覽器</span>
-</code></pre></div><h2 id="一證交所httpswwwtwsecomtwzh爬蟲"><strong>一.<a href="https://www.twse.com.tw/zh/">證交所</a>爬蟲</strong></h2>
+</code></pre></div><hr>
+<h2 id="一證交所httpswwwtwsecomtwzh爬蟲"><strong>一.<a href="https://www.twse.com.tw/zh/">證交所</a>爬蟲</strong></h2>
+<p><img src="/images/blog/crawl_twse.png" alt=""></p>
 <blockquote>
 <p>data為表格型態 ➨ <code>pd.read</code></p>
 </blockquote>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#080;font-weight:bold">import</span> <span style="color:#b06;font-weight:bold">pandas</span> <span style="color:#080;font-weight:bold">as</span> <span style="color:#b06;font-weight:bold">pd</span>
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#b06;font-weight:bold">requests</span>
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#b06;font-weight:bold">io</span>
+
+<span style="color:#888"># 將json改為csv</span>
+url = <span style="color:#d20;background-color:#fff0f0">&#39;https://www.twse.com.tw/exchangeReport/MI_INDEX?response=csv&amp;date=20220412&amp;type=ALLBUT0999&amp;_=1649743235999&#39;</span>
+headers = {<span style="color:#d20;background-color:#fff0f0">&#39;User-Agent&#39;</span>: <span style="color:#d20;background-color:#fff0f0">&#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/111.25 (KHTML, like Gecko) Chrome/99.0.2345.81 Safari/123.36&#39;</span>}
+
+res = requests.get(url,headers=headers)
+
+<span style="color:#888"># 去除指數價格</span>
+lines = [l <span style="color:#080;font-weight:bold">for</span> l <span style="color:#080">in</span> res.text.split(<span style="color:#d20;background-color:#fff0f0">&#39;</span><span style="color:#04d;background-color:#fff0f0">\n</span><span style="color:#d20;background-color:#fff0f0">&#39;</span>) <span style="color:#080;font-weight:bold">if</span> <span style="color:#038">len</span>(l.split(<span style="color:#d20;background-color:#fff0f0">&#39;,&#34;&#39;</span>))&gt;=<span style="color:#00d;font-weight:bold">10</span>]
+<span style="color:#888"># 將list轉為txt方便用csv讀取</span>
+df = pd.read_csv(io.StringIO(<span style="color:#d20;background-color:#fff0f0">&#39;,&#39;</span>.join(lines)))
+<span style="color:#888"># 將不必要的符號去除</span>
+df = df.applymap(<span style="color:#080;font-weight:bold">lambda</span> s:(<span style="color:#038">str</span>(s).replace(<span style="color:#d20;background-color:#fff0f0">&#39;=&#39;</span>,<span style="color:#d20;background-color:#fff0f0">&#39;&#39;</span>).replace(<span style="color:#d20;background-color:#fff0f0">&#39;,&#39;</span>,<span style="color:#d20;background-color:#fff0f0">&#39;&#39;</span>).replace(<span style="color:#d20;background-color:#fff0f0">&#39;&#34;&#39;</span>,<span style="color:#d20;background-color:#fff0f0">&#39;&#39;</span>))).set_index(<span style="color:#d20;background-color:#fff0f0">&#39;證券代號&#39;</span>)
+<span style="color:#888"># 將數字轉為數值型態</span>
+df = df.applymap(<span style="color:#080;font-weight:bold">lambda</span> s:pd.to_numeric(<span style="color:#038">str</span>(s),errors=<span style="color:#d20;background-color:#fff0f0">&#39;coerce&#39;</span>)).dropna(how=<span style="color:#d20;background-color:#fff0f0">&#39;all&#39;</span>,axis=<span style="color:#00d;font-weight:bold">1</span>)
+df
+</code></pre></div><p><img src="/images/blog/df_twse.png" alt=""></p>
+<hr>
+<h2 id="二公開資訊觀測站httpsmopstwsecomtwmopswebindex爬蟲"><strong>二.<a href="https://mops.twse.com.tw/mops/web/index">公開資訊觀測站</a>爬蟲</strong></h2>
+<p><img src="/images/blog/crawl_mops.png" alt="">  <br><br>
+<img src="/images/blog/crawl_rev.png" alt=""></p>
+<blockquote>
+<p>data為表格型態 ➨ <code>pd.read</code> <br> 點選按鈕 ➨ <code>payload</code></p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#080;font-weight:bold">import</span> <span style="color:#b06;font-weight:bold">pandas</span> <span style="color:#080;font-weight:bold">as</span> <span style="color:#b06;font-weight:bold">pd</span>
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#b06;font-weight:bold">requests</span>
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#b06;font-weight:bold">io</span>
+
+url = <span style="color:#d20;background-color:#fff0f0">&#39;https://mops.twse.com.tw/server-java/FileDownLoad&#39;</span>
+headers = {<span style="color:#d20;background-color:#fff0f0">&#39;User-Agent&#39;</span>: <span style="color:#d20;background-color:#fff0f0">&#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/111.25 (KHTML, like Gecko) Chrome/99.0.2345.81 Safari/123.36&#39;</span>}
+payload = {
+    <span style="color:#d20;background-color:#fff0f0">&#39;step&#39;</span>: <span style="color:#d20;background-color:#fff0f0">&#39;9&#39;</span>,
+    <span style="color:#d20;background-color:#fff0f0">&#39;functionName&#39;</span>: <span style="color:#d20;background-color:#fff0f0">&#39;show_file2&#39;</span>,
+    <span style="color:#d20;background-color:#fff0f0">&#39;filePath&#39;</span>: <span style="color:#d20;background-color:#fff0f0">&#39;/t21/sii/&#39;</span>, <span style="color:#888"># otc</span>
+    <span style="color:#d20;background-color:#fff0f0">&#39;fileName&#39;</span>: <span style="color:#d20;background-color:#fff0f0">&#39;t21sc03_110_1.csv&#39;</span>
+}
+
+res = requests.post(url,data=payload,headers=headers)
+
+res.encoding = <span style="color:#d20;background-color:#fff0f0">&#39;utf8&#39;</span>
+df = pd.read_csv(io.StringIO(res.text))
+<span style="color:#888"># 將不必要的符號去除</span>
+df = df.applymap(<span style="color:#080;font-weight:bold">lambda</span> s:<span style="color:#038">str</span>(s).replace(<span style="color:#d20;background-color:#fff0f0">&#39;,&#39;</span>,<span style="color:#d20;background-color:#fff0f0">&#39;&#39;</span>)).set_index(<span style="color:#d20;background-color:#fff0f0">&#39;公司代號&#39;</span>)
+<span style="color:#888"># 將數字轉為數值型態</span>
+df = df.applymap(<span style="color:#080;font-weight:bold">lambda</span> s:pd.to_numeric(<span style="color:#038">str</span>(s),errors=<span style="color:#d20;background-color:#fff0f0">&#39;coerce&#39;</span>)).dropna(how=<span style="color:#d20;background-color:#fff0f0">&#39;all&#39;</span>,axis=<span style="color:#00d;font-weight:bold">1</span>)
+df
+</code></pre></div><p><img src="/images/blog/df_mops.png" alt=""></p>
+<hr>
+<h2 id="三鉅亨網httpswwwcnyescom爬蟲"><strong>三.<a href="https://www.cnyes.com/">鉅亨網</a>爬蟲</strong></h2>
+<p><img src="/images/blog/crawl_cnyes.png" alt="">  <br><br>
+<img src="/images/blog/crawl_cnyes2.png" alt=""></p>
+<blockquote>
+<p>data為表格型態 ➨ <code>pd.read</code> <br> 點選按鈕 ➨ <code>payload</code></p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#080;font-weight:bold">import</span> <span style="color:#b06;font-weight:bold">pandas</span> <span style="color:#080;font-weight:bold">as</span> <span style="color:#b06;font-weight:bold">pd</span>
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#b06;font-weight:bold">requests</span>
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#b06;font-weight:bold">io</span>
+
+dfs = pd.DataFrame()
+<span style="color:#888"># 將所有頁面的df組合</span>
+<span style="color:#080;font-weight:bold">for</span> page <span style="color:#080">in</span> <span style="color:#038">range</span>(<span style="color:#00d;font-weight:bold">1</span>,<span style="color:#00d;font-weight:bold">50</span>):
+    url = f<span style="color:#d20;background-color:#fff0f0">&#34;https://www.cnyes.com/twstock/financial2.aspx?pi={page}&amp;param=2021</span><span style="color:#33b;background-color:#fff0f0">%E</span><span style="color:#d20;background-color:#fff0f0">5%B9%B412</span><span style="color:#33b;background-color:#fff0f0">%E</span><span style="color:#d20;background-color:#fff0f0">6%9C%88&amp;datetype=ALL&amp;market=T&#34;</span>
+    headers = {<span style="color:#d20;background-color:#fff0f0">&#39;User-Agent&#39;</span>: <span style="color:#d20;background-color:#fff0f0">&#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/111.25 (KHTML, like Gecko) Chrome/99.0.2345.81 Safari/123.36&#39;</span>}
+    payload = {
+        <span style="color:#d20;background-color:#fff0f0">&#39;pi&#39;</span>: page,
+        <span style="color:#d20;background-color:#fff0f0">&#39;param&#39;</span>: <span style="color:#d20;background-color:#fff0f0">&#39;2021年12月&#39;</span>,
+        <span style="color:#d20;background-color:#fff0f0">&#39;datetype&#39;</span>: <span style="color:#d20;background-color:#fff0f0">&#39;ALL&#39;</span>,
+        <span style="color:#d20;background-color:#fff0f0">&#39;market&#39;</span>: <span style="color:#d20;background-color:#fff0f0">&#39;T&#39;</span>
+    }
+    res = requests.post(url,data=payload,headers=headers)
+    df = pd.read_html(res.text,header=<span style="color:#00d;font-weight:bold">0</span>)[<span style="color:#00d;font-weight:bold">0</span>]
+    <span style="color:#080;font-weight:bold">if</span> df[<span style="color:#d20;background-color:#fff0f0">&#39;代碼&#39;</span>][<span style="color:#00d;font-weight:bold">0</span>] == <span style="color:#d20;background-color:#fff0f0">&#39;無相關資料&#39;</span>:
+        <span style="color:#080;font-weight:bold">break</span>
+    dfs = dfs.append(df)
+
+<span style="color:#888"># 去除不必要的符號</span>
+dfs = dfs.applymap(<span style="color:#080;font-weight:bold">lambda</span> s:<span style="color:#038">str</span>(s).replace(<span style="color:#d20;background-color:#fff0f0">&#39;,&#39;</span>,<span style="color:#d20;background-color:#fff0f0">&#39;&#39;</span>)).set_index(<span style="color:#d20;background-color:#fff0f0">&#39;代碼&#39;</span>)
+<span style="color:#888"># 將數字轉為數值型態</span>
+dfs = dfs.applymap(<span style="color:#080;font-weight:bold">lambda</span> s:pd.to_numeric(<span style="color:#038">str</span>(s),errors=<span style="color:#d20;background-color:#fff0f0">&#39;coerce&#39;</span>)).dropna(how=<span style="color:#d20;background-color:#fff0f0">&#39;all&#39;</span>,axis=<span style="color:#00d;font-weight:bold">1</span>)
+dfs
+</code></pre></div><p><img src="/images/blog/df_cnyes.png" alt=""></p>
+<hr>
+<h2 id="三tradingviewhttpstwtradingviewcom爬蟲"><strong>三.<a href="https://tw.tradingview.com/">tradingview</a>爬蟲</strong></h2>
+<p><img src="/images/blog/crawl_tradingview.png" alt=""></p>
+<blockquote>
+<p>data為非表格型態 ➨ <code>BeautifulSoup</code> or <code>res.json</code></p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#080;font-weight:bold">import</span> <span style="color:#b06;font-weight:bold">pandas</span> <span style="color:#080;font-weight:bold">as</span> <span style="color:#b06;font-weight:bold">pd</span>
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#b06;font-weight:bold">requests</span>
+<span style="color:#080;font-weight:bold">from</span> <span style="color:#b06;font-weight:bold">bs4</span> <span style="color:#080;font-weight:bold">import</span> BeautifulSoup
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#b06;font-weight:bold">re</span>
+
+<span style="color:#888"># 先取得各產業網址方便for迴圈爬蟲</span>
+url = <span style="color:#d20;background-color:#fff0f0">&#39;https://tw.tradingview.com/markets/stocks-taiwan/sectorandindustry-industry/&#39;</span>
+headers = {<span style="color:#d20;background-color:#fff0f0">&#39;User-Agent&#39;</span>: <span style="color:#d20;background-color:#fff0f0">&#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/111.25 (KHTML, like Gecko) Chrome/99.0.2345.81 Safari/123.36&#39;</span>}
+res = requests.get(url,headers=headers)
+
+soup = BeautifulSoup(res.text,<span style="color:#d20;background-color:#fff0f0">&#39;html.parser&#39;</span>)
+
+dfs = pd.DataFrame()
+<span style="color:#080;font-weight:bold">for</span> line <span style="color:#080">in</span> soup.find_all(class_=<span style="color:#d20;background-color:#fff0f0">&#39;tv-screener__symbol&#39;</span>):
+    <span style="color:#888"># 取得各產業網址</span>
+    href = <span style="color:#d20;background-color:#fff0f0">&#39;https://tw.tradingview.com&#39;</span>+line[<span style="color:#d20;background-color:#fff0f0">&#39;href&#39;</span>]
+    industry = line.text
+    <span style="color:#888"># 去除部門資料</span>
+    <span style="color:#080;font-weight:bold">if</span> (<span style="color:#d20;background-color:#fff0f0">&#39;-sector&#39;</span> <span style="color:#080">not</span> <span style="color:#080">in</span> href)&amp;(<span style="color:#d20;background-color:#fff0f0">&#39;investment-trusts&#39;</span> <span style="color:#080">not</span> <span style="color:#080">in</span> href):
+        r = requests.get(href)
+        stocks = pd.read_html(r.text,header=<span style="color:#00d;font-weight:bold">0</span>)[<span style="color:#00d;font-weight:bold">0</span>].applymap(<span style="color:#080;font-weight:bold">lambda</span> s:<span style="color:#038">str</span>(s).replace(<span style="color:#d20;background-color:#fff0f0">&#39; &#39;</span>,<span style="color:#d20;background-color:#fff0f0">&#39;&#39;</span>))[<span style="color:#d20;background-color:#fff0f0">&#39;Unnamed: 0&#39;</span>]
+
+        <span style="color:#080;font-weight:bold">for</span> sid <span style="color:#080">in</span> stocks:
+            <span style="color:#888"># 處理股票代號格式</span>
+            stock_id = <span style="color:#d20;background-color:#fff0f0">&#39;&#39;</span>.join([s <span style="color:#080;font-weight:bold">for</span> s <span style="color:#080">in</span> sid <span style="color:#080;font-weight:bold">if</span> s.isdigit()])
+            <span style="color:#080;font-weight:bold">if</span> <span style="color:#038">len</span>(stock_id)&gt;<span style="color:#00d;font-weight:bold">4</span>:
+                stock_id = stock_id[<span style="color:#00d;font-weight:bold">1</span>:<span style="color:#00d;font-weight:bold">5</span>]
+            
+            <span style="color:#888"># 使用re搜尋str中在stock_id後所有的文字</span>
+            name = re.search(f<span style="color:#d20;background-color:#fff0f0">&#34;{stock_id}.*&#34;</span>,sid).group()[<span style="color:#00d;font-weight:bold">4</span>:]
+
+            dfs = dfs.append(pd.DataFrame({
+                <span style="color:#d20;background-color:#fff0f0">&#39;公司簡稱&#39;</span>:name,
+                <span style="color:#d20;background-color:#fff0f0">&#39;產業族群&#39;</span>:industry
+            },index=[stock_id]))
+</code></pre></div><p><img src="/images/blog/df_tradingview.png" alt=""></p>
+<hr>
+<h2 id="四cmoneyhttpswwwcmoneytwapp爬蟲"><strong>四.<a href="https://www.cmoney.tw/app/">CMoney</a>爬蟲</strong></h2>
+<p><img src="/images/blog/crawl_cmy1.png" alt="">  <br><br>
+<img src="/images/blog/crawl_cmy2.png" alt="">  <br><br>
+<img src="/images/blog/crawl_cmy3.png" alt="">  <br><br>
+<img src="/images/blog/crawl_cmy4.png" alt=""></p>
+<blockquote>
+<p>data為非表格型態 ➨ <code>BeautifulSoup</code> or <code>res.json</code><br> 爬蟲前需取得<code>金鑰</code></p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#080;font-weight:bold">import</span> <span style="color:#b06;font-weight:bold">pandas</span> <span style="color:#080;font-weight:bold">as</span> <span style="color:#b06;font-weight:bold">pd</span>
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#b06;font-weight:bold">requests</span>
+<span style="color:#080;font-weight:bold">from</span> <span style="color:#b06;font-weight:bold">bs4</span> <span style="color:#080;font-weight:bold">import</span> BeautifulSoup
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#b06;font-weight:bold">re</span>
+
+stock_id = <span style="color:#d20;background-color:#fff0f0">&#39;2330&#39;</span>
+
+url = f<span style="color:#d20;background-color:#fff0f0">&#34;https://www.cmoney.tw/finance/f00026.aspx?s={stock_id}&#34;</span>
+
+headers = {<span style="color:#d20;background-color:#fff0f0">&#39;User-Agent&#39;</span>: <span style="color:#d20;background-color:#fff0f0">&#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/111.25 (KHTML, like Gecko) Chrome/99.0.2345.81 Safari/123.36&#39;</span>}
+res = requests.get(url,headers=headers)
+soup = BeautifulSoup(res.text,<span style="color:#d20;background-color:#fff0f0">&#39;html.parser&#39;</span>)
+<span style="color:#888"># 取得基本資料的cmkey</span>
+<span style="color:#080;font-weight:bold">for</span> line <span style="color:#080">in</span> soup.find_all(class_=<span style="color:#d20;background-color:#fff0f0">&#34;mobi-finance-subnavi-link&#34;</span>):
+    <span style="color:#080;font-weight:bold">if</span> line.text == <span style="color:#d20;background-color:#fff0f0">&#39;基本資料&#39;</span>:
+        cmkey = line[<span style="color:#d20;background-color:#fff0f0">&#39;cmkey&#39;</span>].replace(<span style="color:#d20;background-color:#fff0f0">&#39;=&#39;</span>,<span style="color:#d20;background-color:#fff0f0">&#39;%3D&#39;</span>)
+
+url = f<span style="color:#d20;background-color:#fff0f0">&#34;https://www.cmoney.tw/finance/ashx/mainpage.ashx?action=GetStockBasicInfo&amp;stockId={stock_id}&amp;cmkey={cmkey}&#34;</span>
+
+<span style="color:#888"># 特別注意要加入Referer</span>
+headers = {
+    <span style="color:#d20;background-color:#fff0f0">&#39;User-Agent&#39;</span>: <span style="color:#d20;background-color:#fff0f0">&#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/111.25 (KHTML, like Gecko) Chrome/99.0.2345.81 Safari/123.36&#39;</span>,
+    <span style="color:#d20;background-color:#fff0f0">&#39;Referer&#39;</span>: f<span style="color:#d20;background-color:#fff0f0">&#34;https://www.cmoney.tw/finance/f00026.aspx?s={stock_id}&#34;</span>
+}
+
+res = requests.get(url,headers=headers)
+
+data = res.json()[<span style="color:#00d;font-weight:bold">0</span>]
+df = pd.DataFrame({
+    <span style="color:#d20;background-color:#fff0f0">&#39;公司名稱&#39;</span>:data[<span style="color:#d20;background-color:#fff0f0">&#39;CompanyName&#39;</span>],
+    <span style="color:#d20;background-color:#fff0f0">&#39;產業&#39;</span>:data[<span style="color:#d20;background-color:#fff0f0">&#39;Industry&#39;</span>],
+    <span style="color:#d20;background-color:#fff0f0">&#39;細產業&#39;</span>:data[<span style="color:#d20;background-color:#fff0f0">&#39;SubIndustry&#39;</span>],
+    <span style="color:#d20;background-color:#fff0f0">&#39;經營項目&#39;</span>:data[<span style="color:#d20;background-color:#fff0f0">&#39;Business&#39;</span>]
+},index=[stock_id])
+
+df
+</code></pre></div><p><img src="/images/blog/df_cmy.png" alt=""></p>
+<hr>
+<h2 id="五即時報價httpstwstockyahoocom爬蟲"><strong>五.<a href="https://tw.stock.yahoo.com/">即時報價</a>爬蟲</strong></h2>
+<p><img src="/images/blog/crawl_yahoo1.png" alt=""></p>
+<blockquote>
+<p>data為非表格型態 ➨ <code>BeautifulSoup</code> or <code>res.json</code></p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#080;font-weight:bold">import</span> <span style="color:#b06;font-weight:bold">pandas</span> <span style="color:#080;font-weight:bold">as</span> <span style="color:#b06;font-weight:bold">pd</span>
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#b06;font-weight:bold">requests</span>
+<span style="color:#080;font-weight:bold">from</span> <span style="color:#b06;font-weight:bold">bs4</span> <span style="color:#080;font-weight:bold">import</span> BeautifulSoup
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#b06;font-weight:bold">re</span>
+
+stock_id = <span style="color:#d20;background-color:#fff0f0">&#39;2330&#39;</span>
+
+url = f<span style="color:#d20;background-color:#fff0f0">&#34;https://tw.quote.finance.yahoo.net/quote/q?type=ta&amp;perd=d&amp;mkt=10&amp;sym={stock_id}&amp;v=1&amp;callback=jQuery111302872649618000682_1649814120914&amp;_=1649814120915&#34;</span>
+headers = {<span style="color:#d20;background-color:#fff0f0">&#39;User-Agent&#39;</span>: <span style="color:#d20;background-color:#fff0f0">&#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/111.25 (KHTML, like Gecko) Chrome/99.0.2345.81 Safari/123.36&#39;</span>}
+res = requests.get(url,headers=headers)
+
+<span style="color:#888"># 最新價格</span>
+current = [l <span style="color:#080;font-weight:bold">for</span> l <span style="color:#080">in</span> res.text.split(<span style="color:#d20;background-color:#fff0f0">&#39;{&#39;</span>) <span style="color:#080;font-weight:bold">if</span> <span style="color:#038">len</span>(l)&gt;=<span style="color:#00d;font-weight:bold">60</span>][-<span style="color:#00d;font-weight:bold">1</span>]
+current = current.replace(<span style="color:#d20;background-color:#fff0f0">&#39;&#34;&#39;</span>,<span style="color:#d20;background-color:#fff0f0">&#39;&#39;</span>).split(<span style="color:#d20;background-color:#fff0f0">&#39;,&#39;</span>)
+<span style="color:#888"># 昨日價格</span>
+yday = <span style="color:#038">float</span>(re.search(<span style="color:#d20;background-color:#fff0f0">&#39;:.*&#39;</span>,[l <span style="color:#080;font-weight:bold">for</span> l <span style="color:#080">in</span> res.text.split(<span style="color:#d20;background-color:#fff0f0">&#39;{&#39;</span>) <span style="color:#080;font-weight:bold">if</span> <span style="color:#038">len</span>(l)&gt;=<span style="color:#00d;font-weight:bold">60</span>][-<span style="color:#00d;font-weight:bold">2</span>].split(<span style="color:#d20;background-color:#fff0f0">&#39;,&#39;</span>)[<span style="color:#00d;font-weight:bold">4</span>]).group()[<span style="color:#00d;font-weight:bold">1</span>:])
+
+df = pd.DataFrame({
+    <span style="color:#d20;background-color:#fff0f0">&#39;open&#39;</span>:<span style="color:#038">float</span>(re.search(<span style="color:#d20;background-color:#fff0f0">&#39;:.*&#39;</span>,current[<span style="color:#00d;font-weight:bold">1</span>]).group()[<span style="color:#00d;font-weight:bold">1</span>:]),
+    <span style="color:#d20;background-color:#fff0f0">&#39;high&#39;</span>:<span style="color:#038">float</span>(re.search(<span style="color:#d20;background-color:#fff0f0">&#39;:.*&#39;</span>,current[<span style="color:#00d;font-weight:bold">2</span>]).group()[<span style="color:#00d;font-weight:bold">1</span>:]),
+    <span style="color:#d20;background-color:#fff0f0">&#39;low&#39;</span>:<span style="color:#038">float</span>(re.search(<span style="color:#d20;background-color:#fff0f0">&#39;:.*&#39;</span>,current[<span style="color:#00d;font-weight:bold">3</span>]).group()[<span style="color:#00d;font-weight:bold">1</span>:]),
+    <span style="color:#d20;background-color:#fff0f0">&#39;close&#39;</span>:<span style="color:#038">float</span>(re.search(<span style="color:#d20;background-color:#fff0f0">&#39;:.*&#39;</span>,current[<span style="color:#00d;font-weight:bold">4</span>]).group()[<span style="color:#00d;font-weight:bold">1</span>:]),
+    <span style="color:#d20;background-color:#fff0f0">&#39;volume&#39;</span>:<span style="color:#038">float</span>(re.search(<span style="color:#d20;background-color:#fff0f0">&#39;:.*&#39;</span>,current[<span style="color:#00d;font-weight:bold">5</span>].replace(<span style="color:#d20;background-color:#fff0f0">&#39;}]&#39;</span>,<span style="color:#d20;background-color:#fff0f0">&#39;&#39;</span>)).group()[<span style="color:#00d;font-weight:bold">1</span>:]),
+    <span style="color:#d20;background-color:#fff0f0">&#39;pct&#39;</span>:<span style="color:#038">round</span>((<span style="color:#038">float</span>(re.search(<span style="color:#d20;background-color:#fff0f0">&#39;:.*&#39;</span>,current[<span style="color:#00d;font-weight:bold">4</span>]).group()[<span style="color:#00d;font-weight:bold">1</span>:])/yday-<span style="color:#00d;font-weight:bold">1</span>)*<span style="color:#00d;font-weight:bold">100</span>,<span style="color:#00d;font-weight:bold">2</span>)
+},index=[stock_id])
+
+df
+</code></pre></div><p><img src="/images/blog/df_yahoo.png" alt=""></p>
 
           </div>
           
@@ -510,6 +718,8 @@ if (!doNotTrack) {
 </footer>
 	
 
+
+<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
 
 
 
