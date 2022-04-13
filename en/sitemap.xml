@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://apollox-company.github.io/</loc>
-    <lastmod>2022-01-04T11:07:10+06:00</lastmod>
+    <lastmod>2022-01-05T11:07:10+06:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -26,13 +26,13 @@
                 />
   </url><url>
     <loc>https://apollox-company.github.io/tags/all/</loc>
-    <lastmod>2022-01-04T11:07:10+06:00</lastmod>
+    <lastmod>2022-01-05T11:07:10+06:00</lastmod>
   </url><url>
     <loc>https://apollox-company.github.io/categories/all/</loc>
-    <lastmod>2022-01-04T11:07:10+06:00</lastmod>
+    <lastmod>2022-01-05T11:07:10+06:00</lastmod>
   </url><url>
     <loc>https://apollox-company.github.io/categories/</loc>
-    <lastmod>2022-01-04T11:07:10+06:00</lastmod>
+    <lastmod>2022-01-05T11:07:10+06:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -55,19 +55,22 @@
                 />
   </url><url>
     <loc>https://apollox-company.github.io/tags/crawler/</loc>
-    <lastmod>2022-01-04T11:07:10+06:00</lastmod>
+    <lastmod>2022-01-05T11:07:10+06:00</lastmod>
+  </url><url>
+    <loc>https://apollox-company.github.io/tags/database/</loc>
+    <lastmod>2022-01-05T11:07:10+06:00</lastmod>
+  </url><url>
+    <loc>https://apollox-company.github.io/tags/mutlithreading/</loc>
+    <lastmod>2022-01-05T11:07:10+06:00</lastmod>
   </url><url>
     <loc>https://apollox-company.github.io/tags/python/</loc>
-    <lastmod>2022-01-04T11:07:10+06:00</lastmod>
+    <lastmod>2022-01-05T11:07:10+06:00</lastmod>
   </url><url>
     <loc>https://apollox-company.github.io/categories/python/</loc>
-    <lastmod>2022-01-04T11:07:10+06:00</lastmod>
-  </url><url>
-    <loc>https://apollox-company.github.io/blog/crawler/</loc>
-    <lastmod>2022-01-04T11:07:10+06:00</lastmod>
+    <lastmod>2022-01-05T11:07:10+06:00</lastmod>
   </url><url>
     <loc>https://apollox-company.github.io/tags/</loc>
-    <lastmod>2022-01-04T11:07:10+06:00</lastmod>
+    <lastmod>2022-01-05T11:07:10+06:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -90,6 +93,12 @@
                 />
   </url><url>
     <loc>https://apollox-company.github.io/blog/</loc>
+    <lastmod>2022-01-05T11:07:10+06:00</lastmod>
+  </url><url>
+    <loc>https://apollox-company.github.io/blog/database/</loc>
+    <lastmod>2022-01-05T11:07:10+06:00</lastmod>
+  </url><url>
+    <loc>https://apollox-company.github.io/blog/crawler/</loc>
     <lastmod>2022-01-04T11:07:10+06:00</lastmod>
   </url><url>
     <loc>https://apollox-company.github.io/tags/pandas/</loc>

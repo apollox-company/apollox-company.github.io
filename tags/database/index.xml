@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>database on 𝐀𝐩𝐨𝐥𝐥𝐨𝐗 | 量化交易</title>
+    <link>https://apollox-company.github.io/tags/database/</link>
+    <description>Recent content in database on 𝐀𝐩𝐨𝐥𝐥𝐨𝐗 | 量化交易</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 05 Jan 2022 11:07:10 +0600</lastBuildDate><atom:link href="https://apollox-company.github.io/tags/database/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>打造數據資料庫</title>
+      <link>https://apollox-company.github.io/blog/database/</link>
+      <pubDate>Wed, 05 Jan 2022 11:07:10 +0600</pubDate>
+      
+      <guid>https://apollox-company.github.io/blog/database/</guid>
+      <description>前言  學會網站爬蟲後接下來就是要將time series的data整理並儲存至database，如此一來就可以進行更高階的數據分析，甚至可以拿來給machine learning做學習，讓AI根據歷史資料來做預測! 而最後會講解如何提高爬蟲的速度，原本預計要爬10分鐘的data可以提升至1分鐘爬完，是不是很神奇啊~
+ 目錄  認識資料庫</description>
+    </item>
+    
+  </channel>
+</rss>
