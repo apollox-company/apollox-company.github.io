@@ -6,7 +6,18 @@
     <description>Recent content in All on 𝐀𝐩𝐨𝐥𝐥𝐨𝐗 | 量化交易</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Thu, 06 Jan 2022 11:07:10 +0600</lastBuildDate><atom:link href="https://apollox-company.github.io/categories/all/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 Jan 2022 11:07:10 +0600</lastBuildDate><atom:link href="https://apollox-company.github.io/categories/all/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>從GitHub到PYPI</title>
+      <link>https://apollox-company.github.io/blog/pypi/</link>
+      <pubDate>Sat, 08 Jan 2022 11:07:10 +0600</pubDate>
+      
+      <guid>https://apollox-company.github.io/blog/pypi/</guid>
+      <description>前言  不知道大家有沒有遇過這種情況，自己在本地端寫好功能強大的專案，但想讓親朋好友也能使用的話要不傳上雲端硬碟，要不就放上Github，但從Github上安裝的指令又臭又長:
+ pip install git+https://github.com/User/Repo.git 而我們想要做到的是跟安裝pandas、numpy一樣的效果:
+ pip install pandas pip install numpy 所以我們就教導大家如何打包專案到PYPI上吧!</description>
+    </item>
+    
     <item>
       <title>數據視覺化實戰</title>
       <link>https://apollox-company.github.io/blog/visualize/</link>
