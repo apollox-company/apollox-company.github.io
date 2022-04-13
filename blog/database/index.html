@@ -379,9 +379,131 @@ if (!doNotTrack) {
 </blockquote>
 <h2 id="目錄"><strong>目錄</strong></h2>
 <blockquote>
-<p><code>認識資料庫</code><br><code>Pickle資料庫</code><br><code>常見股價爬蟲</code><br><code>OS程序調度</code><br><code>多線程股價爬蟲</code></p>
+<p><code>認識資料庫</code><br><code>Pickle資料庫</code><br><code>多檔數股票爬蟲</code><br><code>OS程序調度</code><br><code>多線程股票爬蟲</code></p>
 </blockquote>
+<hr>
 <h2 id="一認識資料庫"><strong>一.認識資料庫</strong></h2>
+<p>資料庫溝通: <code>C.R.U.D</code> (create / read / update / delete)</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">           <span style="color:#b06;font-weight:bold">-</span> <span style="color:#b06;font-weight:bold">關聯式</span> (<span style="color:#b06;font-weight:bold">SQL</span> / <span style="color:#b06;font-weight:bold">表格型</span> / <span style="color:#b06;font-weight:bold">MySQL</span>,<span style="color:#b06;font-weight:bold">SQLite</span>,<span style="color:#b06;font-weight:bold">SQL</span> <span style="color:#b06;font-weight:bold">Server</span>)
+<span style="color:#b06;font-weight:bold">DataBase</span> <span style="color:#b06;font-weight:bold">--</span>|
+           <span style="color:#b06;font-weight:bold">-</span> <span style="color:#b06;font-weight:bold">非關聯式</span> (<span style="color:#b06;font-weight:bold">NoSQL</span> / <span style="color:#b06;font-weight:bold">非表格型</span> / <span style="color:#b06;font-weight:bold">MongoDB</span>)  
+</code></pre></div><hr>
+<h2 id="二pickle資料庫"><strong>二.Pickle資料庫</strong></h2>
+<blockquote>
+<p><code>永續性</code>:多次執行程式間可儲存應用程式物件，將物件儲存在磁碟上，方便日後檢索。<br><code>讀取速度</code>:使用二進位制，讀取資料上較快速，但缺點為無法節省空間，資料量過大易造成儲存空間不夠。<br><code>可移植性</code>:獨立於os且可相容不同Python版本，可在各種作業系統(Windows/Mac OS/Linux)下讀取資料。</p>
+</blockquote>
+<hr>
+<h2 id="三多檔數股票爬蟲httpstwtradingviewcom"><strong>三.<a href="https://tw.tradingview.com/">多檔數股票爬蟲</a></strong></h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#080;font-weight:bold">import</span> <span style="color:#b06;font-weight:bold">pandas</span> <span style="color:#080;font-weight:bold">as</span> <span style="color:#b06;font-weight:bold">pd</span>
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#b06;font-weight:bold">requests</span>
+<span style="color:#080;font-weight:bold">from</span> <span style="color:#b06;font-weight:bold">bs4</span> <span style="color:#080;font-weight:bold">import</span> BeautifulSoup
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#b06;font-weight:bold">re</span>
+
+<span style="color:#888"># 先取得各產業網址方便for迴圈爬蟲</span>
+url = <span style="color:#d20;background-color:#fff0f0">&#39;https://tw.tradingview.com/markets/stocks-taiwan/sectorandindustry-industry/&#39;</span>
+headers = {<span style="color:#d20;background-color:#fff0f0">&#39;User-Agent&#39;</span>: <span style="color:#d20;background-color:#fff0f0">&#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/111.25 (KHTML, like Gecko) Chrome/99.0.2345.81 Safari/123.36&#39;</span>}
+res = requests.get(url,headers=headers)
+
+soup = BeautifulSoup(res.text,<span style="color:#d20;background-color:#fff0f0">&#39;html.parser&#39;</span>)
+
+dfs = pd.DataFrame()
+<span style="color:#080;font-weight:bold">for</span> line <span style="color:#080">in</span> soup.find_all(class_=<span style="color:#d20;background-color:#fff0f0">&#39;tv-screener__symbol&#39;</span>):
+    <span style="color:#888"># 取得各產業網址</span>
+    href = <span style="color:#d20;background-color:#fff0f0">&#39;https://tw.tradingview.com&#39;</span>+line[<span style="color:#d20;background-color:#fff0f0">&#39;href&#39;</span>]
+    industry = line.text
+    <span style="color:#888"># 去除部門資料</span>
+    <span style="color:#080;font-weight:bold">if</span> (<span style="color:#d20;background-color:#fff0f0">&#39;-sector&#39;</span> <span style="color:#080">not</span> <span style="color:#080">in</span> href)&amp;(<span style="color:#d20;background-color:#fff0f0">&#39;investment-trusts&#39;</span> <span style="color:#080">not</span> <span style="color:#080">in</span> href):
+        r = requests.get(href)
+        stocks = pd.read_html(r.text,header=<span style="color:#00d;font-weight:bold">0</span>)[<span style="color:#00d;font-weight:bold">0</span>].applymap(<span style="color:#080;font-weight:bold">lambda</span> s:<span style="color:#038">str</span>(s).replace(<span style="color:#d20;background-color:#fff0f0">&#39; &#39;</span>,<span style="color:#d20;background-color:#fff0f0">&#39;&#39;</span>))[<span style="color:#d20;background-color:#fff0f0">&#39;Unnamed: 0&#39;</span>]
+
+        <span style="color:#080;font-weight:bold">for</span> sid <span style="color:#080">in</span> stocks:
+            <span style="color:#888"># 處理股票代號格式</span>
+            stock_id = <span style="color:#d20;background-color:#fff0f0">&#39;&#39;</span>.join([s <span style="color:#080;font-weight:bold">for</span> s <span style="color:#080">in</span> sid <span style="color:#080;font-weight:bold">if</span> s.isdigit()])
+            <span style="color:#080;font-weight:bold">if</span> <span style="color:#038">len</span>(stock_id)&gt;<span style="color:#00d;font-weight:bold">4</span>:
+                stock_id = stock_id[<span style="color:#00d;font-weight:bold">1</span>:<span style="color:#00d;font-weight:bold">5</span>]
+            
+            <span style="color:#888"># 使用re搜尋str中在stock_id後所有的文字</span>
+            name = re.search(f<span style="color:#d20;background-color:#fff0f0">&#34;{stock_id}.*&#34;</span>,sid).group()[<span style="color:#00d;font-weight:bold">4</span>:]
+
+            dfs = dfs.append(pd.DataFrame({
+                <span style="color:#d20;background-color:#fff0f0">&#39;公司簡稱&#39;</span>:name,
+                <span style="color:#d20;background-color:#fff0f0">&#39;產業族群&#39;</span>:industry
+            },index=[stock_id]))
+
+<span style="color:#888"># 儲存成pkl檔</span>
+dfs.to_pickle(<span style="color:#d20;background-color:#fff0f0">&#39;data.pkl&#39;</span>)
+</code></pre></div><p>總計花了49秒爬完
+<img src="/images/blog/df_tradingview.png" alt=""></p>
+<hr>
+<h2 id="四os程序調度"><strong>四.OS程序調度</strong></h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">     <span style="color:#b06;font-weight:bold">-</span> <span style="color:#b06;font-weight:bold">Multiprocessing</span>(<span style="color:#b06;font-weight:bold">多進程</span>) <span style="color:#b06;font-weight:bold">-</span> <span style="color:#b06;font-weight:bold">同時進行</span> / <span style="color:#b06;font-weight:bold">resources獨立</span> / <span style="color:#b06;font-weight:bold">適用</span>:<span style="color:#555">CPU-bound</span> (<span style="color:#b06;font-weight:bold">高CPU計算</span>)
+<span style="color:#b06;font-weight:bold">os</span> <span style="color:#b06;font-weight:bold">--</span>|
+     <span style="color:#b06;font-weight:bold">-</span> <span style="color:#b06;font-weight:bold">Multithreading</span>(<span style="color:#b06;font-weight:bold">多線程</span>) <span style="color:#b06;font-weight:bold">-</span> <span style="color:#b06;font-weight:bold">同步切換</span> / <span style="color:#b06;font-weight:bold">resources共享</span> / <span style="color:#b06;font-weight:bold">適用</span>:<span style="color:#555">I</span>/<span style="color:#b06;font-weight:bold">O-bound</span> (<span style="color:#b06;font-weight:bold">等待伺服器回應</span> :<span style="color:#555">爬蟲</span>)
+</code></pre></div><br>
+<h4 id="gil-global-interpreter-lock">GIL (Global Interpreter Lock)</h4>
+<blockquote>
+<p>Python直譯器無法<code>同時執行程式 (Concurrency)</code> &raquo; single thread <br> single-threaded program<code>執行速度較快</code></p>
+</blockquote>
+<hr>
+<h2 id="五多線程股票爬蟲"><strong>五.多線程股票爬蟲</strong></h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#080;font-weight:bold">import</span> <span style="color:#b06;font-weight:bold">pandas</span> <span style="color:#080;font-weight:bold">as</span> <span style="color:#b06;font-weight:bold">pd</span>
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#b06;font-weight:bold">requests</span>
+<span style="color:#080;font-weight:bold">from</span> <span style="color:#b06;font-weight:bold">bs4</span> <span style="color:#080;font-weight:bold">import</span> BeautifulSoup
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#b06;font-weight:bold">re</span>
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#b06;font-weight:bold">time</span>
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#b06;font-weight:bold">concurrent</span>
+
+<span style="color:#888"># 先取得各產業網址方便for迴圈爬蟲</span>
+url = <span style="color:#d20;background-color:#fff0f0">&#39;https://tw.tradingview.com/markets/stocks-taiwan/sectorandindustry-industry/&#39;</span>
+headers = {<span style="color:#d20;background-color:#fff0f0">&#39;User-Agent&#39;</span>: <span style="color:#d20;background-color:#fff0f0">&#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/111.25 (KHTML, like Gecko) Chrome/99.0.2345.81 Safari/123.36&#39;</span>}
+res = requests.get(url,headers=headers)
+
+soup = BeautifulSoup(res.text,<span style="color:#d20;background-color:#fff0f0">&#39;html.parser&#39;</span>)
+
+dfs = pd.DataFrame()
+<span style="color:#888"># 使用concurrent.futures.ThreadPoolExecutor需將爬蟲函式化</span>
+lines = soup.find_all(class_=<span style="color:#d20;background-color:#fff0f0">&#39;tv-screener__symbol&#39;</span>)
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06b;font-weight:bold">crawl</span>(line):
+    df = pd.DataFrame()
+    <span style="color:#888"># 取得各產業網址</span>
+    href = <span style="color:#d20;background-color:#fff0f0">&#39;https://tw.tradingview.com&#39;</span>+line[<span style="color:#d20;background-color:#fff0f0">&#39;href&#39;</span>]
+    industry = line.text
+    <span style="color:#888"># 去除部門資料</span>
+    <span style="color:#080;font-weight:bold">if</span> (<span style="color:#d20;background-color:#fff0f0">&#39;-sector&#39;</span> <span style="color:#080">not</span> <span style="color:#080">in</span> href)&amp;(<span style="color:#d20;background-color:#fff0f0">&#39;investment-trusts&#39;</span> <span style="color:#080">not</span> <span style="color:#080">in</span> href):
+        r = requests.get(href)
+        stocks = pd.read_html(r.text,header=<span style="color:#00d;font-weight:bold">0</span>)[<span style="color:#00d;font-weight:bold">0</span>].applymap(<span style="color:#080;font-weight:bold">lambda</span> s:<span style="color:#038">str</span>(s).replace(<span style="color:#d20;background-color:#fff0f0">&#39; &#39;</span>,<span style="color:#d20;background-color:#fff0f0">&#39;&#39;</span>))[<span style="color:#d20;background-color:#fff0f0">&#39;Unnamed: 0&#39;</span>]
+
+        <span style="color:#080;font-weight:bold">for</span> sid <span style="color:#080">in</span> stocks:
+            <span style="color:#888"># 處理股票代號格式</span>
+            stock_id = <span style="color:#d20;background-color:#fff0f0">&#39;&#39;</span>.join([s <span style="color:#080;font-weight:bold">for</span> s <span style="color:#080">in</span> sid <span style="color:#080;font-weight:bold">if</span> s.isdigit()])
+            <span style="color:#080;font-weight:bold">if</span> <span style="color:#038">len</span>(stock_id)&gt;<span style="color:#00d;font-weight:bold">4</span>:
+                stock_id = stock_id[<span style="color:#00d;font-weight:bold">1</span>:<span style="color:#00d;font-weight:bold">5</span>]
+            
+            <span style="color:#888"># 使用re搜尋str中在stock_id後所有的文字</span>
+            name = re.search(f<span style="color:#d20;background-color:#fff0f0">&#34;{stock_id}.*&#34;</span>,sid).group()[<span style="color:#00d;font-weight:bold">4</span>:]
+
+            df = df.append(pd.DataFrame({
+                <span style="color:#d20;background-color:#fff0f0">&#39;公司簡稱&#39;</span>:name,
+                <span style="color:#d20;background-color:#fff0f0">&#39;產業族群&#39;</span>:industry
+            },index=[stock_id]))
+            
+    <span style="color:#080;font-weight:bold">return</span> df
+
+dfs = pd.DataFrame()
+<span style="color:#888"># 多線程爬蟲</span>
+<span style="color:#080;font-weight:bold">with</span> concurrent.futures.ThreadPoolExecutor(max_workers=<span style="color:#00d;font-weight:bold">10</span>) <span style="color:#080;font-weight:bold">as</span> executor:
+    data = {executor.submit(crawl,line):line <span style="color:#080;font-weight:bold">for</span> line <span style="color:#080">in</span> lines}
+    <span style="color:#080;font-weight:bold">for</span> datum <span style="color:#080">in</span> concurrent.futures.as_completed(data):
+        dfs = dfs.append(datum.result())
+
+<span style="color:#888"># 儲存成pkl檔</span>
+dfs.to_pickle(<span style="color:#d20;background-color:#fff0f0">&#39;data.pkl&#39;</span>)
+</code></pre></div><p>總計花了5秒爬完
+<img src="/images/blog/df_tradingview.png" alt=""></p>
+<h2 id="結論"><strong>結論</strong></h2>
+<blockquote>
+<p>Python最大的缺點或許就是單執行緒，也就是無法同時進行程式，假設今天要爬的網站有100個，那等於要多花好幾倍的時間在等爬蟲，這時就可以使用多線程來幫助我們同時去爬不同網站的數據。<br>可以想像一家店原本1個員工要做10件事，使用多線程後就等於多生了9個員工幫我們做事，從<code>原本的49秒到只要5秒爬完</code>，大大提升爬蟲效率!<br><br>關於多線程多進程的運作可以參考<a href="https://blog.louie.lu/2017/08/01/%E4%BD%A0%E6%89%80%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84-python-%E6%A8%99%E6%BA%96%E5%87%BD%E5%BC%8F%E5%BA%AB%E7%94%A8%E6%B3%95-06-concurrent-futures/">創立非同步任務 — 你所不知道的 Python 標準函式庫用法</a>，裡面有更多更深的程式碼可以加強這方面的專業知識哦!</p>
+</blockquote>
 
           </div>
           
@@ -502,8 +624,6 @@ if (!doNotTrack) {
 </footer>
 	
 
-
-<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
 
 
 
