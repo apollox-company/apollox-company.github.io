@@ -415,15 +415,26 @@ iStock ---- iStock --- __init__.py <span style="color:#888"># 需有__init__.py�
 username = __token__
 password = &quot;Your token&quot;
 </code></pre><p><img src="/images/blog/pypi_token.png" alt=""></p>
-<blockquote>
-<p><code>上傳指令</code></p>
-</blockquote>
+<hr>
+<h2 id="上傳pypi"><strong>上傳PYPI</strong></h2>
 <pre><code>pip install twine
 pip install wheel
 </code></pre><pre><code>python setup.py sdist
 python setup.py bdist_wheel
 twine upload dist/*
 </code></pre><p><img src="/images/blog/pypi_cmd.png" alt=""></p>
+<p><img src="/images/blog/pypi_upload.png" alt=""></p>
+<hr>
+<h2 id="更新版本"><strong>更新版本</strong></h2>
+<p>需將<code>setup.py</code>內的version修改<br>重複上傳指令</p>
+<pre><code>python setup.py sdist
+python setup.py bdist_wheel
+twine upload dist/*
+</code></pre><hr>
+<h2 id="結論"><strong>結論</strong></h2>
+<blockquote>
+<p>成功將自己的package push到PYPI上感覺起來是不是不一樣了呢!但目前的方式是將py檔傳上去，代表任何人<code>pip install</code>後就能夠查看你的程式碼囉!這點要特別注意!<br><br>未來有機會的話再來教導如何將自己的py檔做加密，像是轉成<code>.pyc</code>、<code>.pyd</code>、<code>.so</code>檔，這部分涉及較高的技術，未來學會了再做成教學文!</p>
+</blockquote>
 
           </div>
           
@@ -432,6 +443,18 @@ twine upload dist/*
       <div class="col-md-4">
         <aside class="sidebar"><div class="widget widget-latest-post">
     <h4 class="widget-title">Latest Posts</h4>
+    
+    <div class="media">
+      <a class="pull-left" href="/blog/linenotify/">
+        
+        <img class="media-object" src="/images/blog/linenotify.png" alt="打造Line自動推播機器人">
+        
+      </a>
+      <div class="media-body">
+        <h4 class="media-heading"><a href="/blog/linenotify/">打造Line自動推播機器人</a></h4>
+        <p>前言 </p>
+      </div>
+    </div>
     
     <div class="media">
       <a class="pull-left" href="/blog/pypi/">
@@ -469,18 +492,6 @@ twine upload dist/*
       </div>
     </div>
     
-    <div class="media">
-      <a class="pull-left" href="/blog/crawler/">
-        
-        <img class="media-object" src="/images/blog/crawler.png" alt="Python網頁爬蟲實戰">
-        
-      </a>
-      <div class="media-body">
-        <h4 class="media-heading"><a href="/blog/crawler/">Python網頁爬蟲實戰</a></h4>
-        <p>前言  這個章節來到Python的最強功能&ndash;網頁爬蟲，這也是數據分析最重要的前菜，大家想 …</p>
-      </div>
-    </div>
-    
   </div>
 <div class="widget widget-category">
   <h4 class="widget-title">Categories</h4>
@@ -499,6 +510,8 @@ twine upload dist/*
     <li><a href="/tags/environment/">environment</a></li>
     <li><a href="/tags/google/">Google</a></li>
     <li><a href="/tags/hugo/">Hugo</a></li>
+    <li><a href="/tags/line/">Line</a></li>
+    <li><a href="/tags/line-notify/">Line Notify</a></li>
     <li><a href="/tags/matplotlib/">matplotlib</a></li>
     <li><a href="/tags/mutlithreading/">mutlithreading</a></li>
     <li><a href="/tags/pandas/">pandas</a></li>

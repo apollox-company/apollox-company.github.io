@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Line on 𝐀𝐩𝐨𝐥𝐥𝐨𝐗 | 量化交易</title>
+    <link>https://apollox-company.github.io/tags/line/</link>
+    <description>Recent content in Line on 𝐀𝐩𝐨𝐥𝐥𝐨𝐗 | 量化交易</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Sun, 09 Jan 2022 11:07:10 +0600</lastBuildDate><atom:link href="https://apollox-company.github.io/tags/line/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>打造Line自動推播機器人</title>
+      <link>https://apollox-company.github.io/blog/linenotify/</link>
+      <pubDate>Sun, 09 Jan 2022 11:07:10 +0600</pubDate>
+      
+      <guid>https://apollox-company.github.io/blog/linenotify/</guid>
+      <description>前言 </description>
+    </item>
+    
+  </channel>
+</rss>
