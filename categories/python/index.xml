@@ -13,7 +13,10 @@
       <pubDate>Sun, 09 Jan 2022 11:07:10 +0600</pubDate>
       
       <guid>https://apollox-company.github.io/blog/linenotify/</guid>
-      <description>前言 </description>
+      <description>前言  本地端開發出很棒的策略，並且盤後都會選出幾檔非常強勢股票，但同時你也想跟親朋好友分享你選到的好股票，那該怎麼辦呢?自己傳訊息一檔一檔慢慢打嗎?
+當然不會嘛!太麻煩了，萬一盤中還想附上最新價格不就打死了?
+所以我們就要藉由Line API的功能去打造股票推播機器人囉!
+ 目錄  申請Line API 傳送訊息 傳送圖片</description>
     </item>
     
     <item>

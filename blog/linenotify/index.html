@@ -374,6 +374,57 @@ if (!doNotTrack) {
           </div>
           <div class="post-content post-excerpt">
             <h2 id="前言"><strong>前言</strong></h2>
+<blockquote>
+<p>本地端開發出很棒的策略，並且盤後都會選出幾檔非常強勢股票，但同時你也想跟親朋好友分享你選到的好股票，那該怎麼辦呢?自己傳訊息一檔一檔慢慢打嗎?<br>當然不會嘛!太麻煩了，萬一盤中還想附上最新價格不就打死了?<br><br>所以我們就要藉由<code>Line API</code>的功能去打造股票推播機器人囉!</p>
+</blockquote>
+<h2 id="目錄"><strong>目錄</strong></h2>
+<blockquote>
+<p><code>申請Line API</code> <br> <code>傳送訊息</code> <br> <code>傳送圖片</code></p>
+</blockquote>
+<hr>
+<h2 id="申請line-apihttpsnotify-botlinemezh_tw"><strong>申請<a href="https://notify-bot.line.me/zh_TW/">Line API</a></strong></h2>
+<blockquote>
+<p>點選<code>管理登錄服務</code><br> 服務網址/Callback URL 都填<code>http://127.0.0.1</code><br>點選<code>登錄</code> <br>電子郵件認證</p>
+</blockquote>
+<p><img src="/images/blog/line_login.png" alt="">  <br><br>
+<img src="/images/blog/line_profile.png" alt=""></p>
+<blockquote>
+<p>點選<code>個人頁面</code> <br> 點選<code>發行權杖</code> <br> 複製<code>token</code>(僅會出現一次)</p>
+</blockquote>
+<p><img src="/images/blog/line_apply_token.png" alt=""></p>
+<hr>
+<h2 id="傳送訊息"><strong>傳送訊息</strong></h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#080;font-weight:bold">import</span> <span style="color:#b06;font-weight:bold">requests</span>
+
+message = <span style="color:#d20;background-color:#fff0f0">&#39;大家好!我是股票機器人!很高興為大家服務&#39;</span>
+api_token = <span style="color:#d20;background-color:#fff0f0">&#34;Your API Token&#34;</span>
+
+headers = {<span style="color:#d20;background-color:#fff0f0">&#39;Authorization&#39;</span>:<span style="color:#d20;background-color:#fff0f0">&#39;Bearer &#39;</span>+api_token}
+params = {<span style="color:#d20;background-color:#fff0f0">&#39;message&#39;</span>:message}
+r = requests.post(<span style="color:#d20;background-color:#fff0f0">&#39;https://notify-api.line.me/api/notify&#39;</span>,headers=headers, params=params)
+r.text
+</code></pre></div><p><img src="/images/blog/line_message.png" alt=""></p>
+<hr>
+<h2 id="傳送圖片"><strong>傳送圖片</strong></h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#080;font-weight:bold">import</span> <span style="color:#b06;font-weight:bold">requests</span>
+
+message = <span style="color:#d20;background-color:#fff0f0">&#39;傳送圖片!&#39;</span>
+api_token = <span style="color:#d20;background-color:#fff0f0">&#34;Your API Token&#34;</span>
+image = <span style="color:#d20;background-color:#fff0f0">&#39;C:/Users/apple/iStock/strategy.png&#39;</span> <span style="color:#888"># 圖片絕對路徑</span>
+
+headers = {<span style="color:#d20;background-color:#fff0f0">&#39;Authorization&#39;</span>:<span style="color:#d20;background-color:#fff0f0">&#39;Bearer &#39;</span>+api_token}
+params = {<span style="color:#d20;background-color:#fff0f0">&#39;message&#39;</span>:message}
+files = {<span style="color:#d20;background-color:#fff0f0">&#39;imageFile&#39;</span> : <span style="color:#038">open</span>(image, <span style="color:#d20;background-color:#fff0f0">&#39;rb&#39;</span>)}
+
+r = requests.post(<span style="color:#d20;background-color:#fff0f0">&#39;https://notify-api.line.me/api/notify&#39;</span>,headers=headers, params=params,files=files)
+r.text
+</code></pre></div><p><img src="/images/blog/line_image.png" alt=""></p>
+<hr>
+<h2 id="結論"><strong>結論</strong></h2>
+<blockquote>
+<p>有了Line機器人自動推播股票代號後，是不是方便很多啊~甚至可以再附上更仔細的數據，像是<code>月營收</code>或<code>本益比</code>，看自己是根據什麼訊號交易，甚至可以貼上最新的<code>RSI</code>、<code>KD值</code>，這樣就算不用盯盤也可以掌握最新的股票資訊!<br><br> 隨手附上目前個人的Line推播機器人XD</p>
+</blockquote>
+<p><img src="/images/blog/line_itrader.png" alt=""></p>
 
           </div>
           
@@ -391,7 +442,7 @@ if (!doNotTrack) {
       </a>
       <div class="media-body">
         <h4 class="media-heading"><a href="/blog/linenotify/">打造Line自動推播機器人</a></h4>
-        <p>前言 </p>
+        <p>前言  本地端開發出很棒的策略，並且盤後都會選出幾檔非常強勢股票，但同時你也想跟親朋好友分享你選到的 …</p>
       </div>
     </div>
     
